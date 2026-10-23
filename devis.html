@@ -3,15 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>VistaWash95 – Devis gratuit nettoyage canapé & vitres</title>
-<meta name="description" content="Nettoyage de canapés en tissu et de vitres à domicile. Demandez votre devis gratuit en moins d'une minute.">
+<title>VistaWash95 – Devis gratuit nettoyage textile & vitres</title>
+<meta name="description" content="Nettoyage de canapés, matelas, chaises, tapis et vitres à domicile. Demandez votre devis gratuit en moins d'une minute.">
 <meta name="theme-color" content="#0B3D91">
 <meta name="robots" content="noindex, follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- ===== META PIXEL (optionnel) : collez votre code Pixel ici, l'événement "Lead" est déjà envoyé à la validation ===== -->
+<!-- ===== META PIXEL : chargé uniquement après accord du visiteur (bannière cookies) ===== -->
+<script>
+window.VW_PIXEL_ID = "__PIXEL_ID__"; // identifiant du Pixel Meta
+window.vwLoadPixel = function(){
+if (window.fbq || !/^\d{6,}$/.test(window.VW_PIXEL_ID)) return;
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', window.VW_PIXEL_ID);
+fbq('track', 'PageView');
+};
+try { if (localStorage.getItem("vw_consent") === "yes") window.vwLoadPixel(); } catch(e){}
+</script>
 <style>
 :root{
 --blue:#0B3D91; --blue-2:#0a2f70; --aqua:#19C3E6; --yellow:#FFD400; --ink:#0F1423;
@@ -101,6 +111,15 @@ section.block > p{text-align:center;color:var(--muted);font-size:15px;margin-top
 footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 16px 110px}
 .fab{position:fixed;right:16px;bottom:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .final .fab{display:none}
+.cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:16px;max-width:560px;margin:0 auto;display:none}
+.cookie.show{display:block}
+.cookie p{font-size:14px;color:var(--ink);line-height:1.45}
+.cookie p a{color:var(--blue)}
+.cookie .cb{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.cookie button{border-radius:12px;padding:12px;font-weight:700;font-size:15px}
+.cookie .no{background:var(--bg);border:2px solid var(--line)}
+.cookie .yes{background:var(--blue);color:#fff}
+.has-cookie .fab{bottom:190px}
 .fab svg{width:32px;height:32px;fill:#fff}
 @media (min-width:700px){.shots{grid-template-columns:1fr 1fr}.card{padding:28px 28px 24px}}
 </style>
@@ -111,7 +130,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 16px 110
 <a href="tel:+33767717586">📞 07 67 71 75 86</a>
 </header>
 <section class="hero">
-<h1>Canapé & vitres<br><mark>comme neufs</mark></h1>
+<h1>Canapé, matelas, vitres…<br><mark>comme neufs</mark></h1>
 <p>Nettoyage professionnel à domicile. Obtenez votre <strong>devis gratuit</strong> en moins d'une minute.</p>
 <div class="badges"><span>✓ Devis gratuit</span><span>✓ Sans engagement</span><span>✓ À domicile</span><span>✓ Val-d'Oise (95)</span></div>
 </section>
@@ -139,7 +158,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 16px 110
 </div>
 </section>
 <div class="cta2"><a href="#devis" class="btn btn-main" style="text-decoration:none">Je demande mon devis gratuit</a></div>
-<footer>© <span id="yr"></span> VistaWash95 · Nettoyage de canapés & vitres à domicile</footer>
+<footer>© <span id="yr"></span> VistaWash95 · Nettoyage textile & vitres à domicile</footer>
 <a class="fab" id="fab" href="#" aria-label="Nous écrire sur WhatsApp" target="_blank" rel="noopener">
 <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.3c-2.1 0-4-.6-5.7-1.6l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1.1-1.7-1.8-3.6-1.8-5.7C5.1 9.9 10 5.1 16 5.1s10.9 4.8 10.9 10.7S22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2s0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.3-.3-.4-.6-.5z"/></svg>
 </a>
@@ -155,20 +174,31 @@ const answers = {};
 let stepIndex = 0;
 const STEPS = [
 { id:"service", q:"Quel service vous intéresse ?", type:"single", label:"Service", options:[
-{v:"Nettoyage de canapé", ic:"🛋️", sub:"Canapé, fauteuil en tissu"},
+{v:"Nettoyage textile", ic:"🛋️", sub:"Canapé, matelas, chaises, fauteuils, tapis"},
 {v:"Nettoyage de vitres", ic:"🪟", sub:"Fenêtres, baies vitrées, véranda"},
-{v:"Canapé + vitres", ic:"✨", sub:"Les deux services"} ]},
-{ id:"canape_type", when:a=>a.service!=="Nettoyage de vitres", q:"Quel type de canapé ?", type:"single", label:"Type de canapé", grid:true, options:[
+{v:"Textile + vitres", ic:"✨", sub:"Les deux services"} ]},
+{ id:"textile_items", when:a=>a.service!=="Nettoyage de vitres", q:"Qu'est-ce qu'on nettoie ?", hint:"Plusieurs choix possibles", type:"multi", label:"À nettoyer", options:[
+{v:"Canapé", ic:"🛋️"}, {v:"Matelas", ic:"🛏️"}, {v:"Chaises", ic:"🪑"},
+{v:"Fauteuils", ic:"💺"}, {v:"Tapis / moquette", ic:"🧶"} ]},
+{ id:"canape_type", when:a=>a.service!=="Nettoyage de vitres" && (a.textile_items||[]).includes("Canapé"), q:"Quel type de canapé ?", type:"single", label:"Type de canapé", grid:true, options:[
 {v:"2 places", ic:"🛋️"}, {v:"3 places", ic:"🛋️"}, {v:"Canapé d'angle", ic:"📐"}, {v:"Grand angle / U", ic:"🔲"},
-{v:"Fauteuil(s)", ic:"💺"}, {v:"Je ne sais pas", ic:"🤔"} ]},
-{ id:"canape_pb", when:a=>a.service!=="Nettoyage de vitres", q:"Qu'est-ce qu'on doit traiter ?", hint:"Plusieurs choix possibles", type:"multi", label:"À traiter", options:[
-{v:"Taches", ic:"💧"}, {v:"Mauvaises odeurs", ic:"👃"}, {v:"Poils d'animaux", ic:"🐾"},
+{v:"Plusieurs canapés", ic:"➕"}, {v:"Je ne sais pas", ic:"🤔"} ]},
+{ id:"matelas", when:a=>a.service!=="Nettoyage de vitres" && (a.textile_items||[]).includes("Matelas"), q:"Quel matelas ?", type:"single", label:"Matelas", grid:true, options:[
+{v:"1 personne", ic:"🛏️"}, {v:"2 personnes", ic:"🛏️"}, {v:"Grand lit (160+)", ic:"👑"}, {v:"Plusieurs matelas", ic:"➕"} ]},
+{ id:"chaises", when:a=>a.service!=="Nettoyage de vitres" && (a.textile_items||[]).includes("Chaises"), q:"Combien de chaises ?", type:"single", label:"Chaises", grid:true, options:[
+{v:"1 à 4", ic:"🪑"}, {v:"5 à 8", ic:"🪑"}, {v:"9 à 12", ic:"🪑"}, {v:"Plus de 12", ic:"🍽️"} ]},
+{ id:"fauteuils", when:a=>a.service!=="Nettoyage de vitres" && (a.textile_items||[]).includes("Fauteuils"), q:"Combien de fauteuils ?", type:"single", label:"Fauteuils", grid:true, options:[
+{v:"1", ic:"💺"}, {v:"2", ic:"💺"}, {v:"3", ic:"💺"}, {v:"4 ou plus", ic:"➕"} ]},
+{ id:"tapis", when:a=>a.service!=="Nettoyage de vitres" && (a.textile_items||[]).includes("Tapis / moquette"), q:"Quelle taille de tapis ?", type:"single", label:"Tapis", grid:true, options:[
+{v:"Petit (moins de 2 m²)", ic:"🧶"}, {v:"Moyen (2 à 4 m²)", ic:"🧶"}, {v:"Grand (plus de 4 m²)", ic:"🧶"}, {v:"Moquette", ic:"🏠"} ]},
+{ id:"textile_pb", when:a=>a.service!=="Nettoyage de vitres", q:"Qu'est-ce qu'on doit traiter ?", hint:"Plusieurs choix possibles", type:"multi", label:"À traiter", options:[
+{v:"Taches", ic:"💧"}, {v:"Mauvaises odeurs", ic:"👃"}, {v:"Acariens / allergies", ic:"🦠"}, {v:"Poils d'animaux", ic:"🐾"},
 {v:"Encrassement / tissu terne", ic:"🌫️"}, {v:"Entretien régulier", ic:"🧽"} ]},
-{ id:"logement", when:a=>a.service!=="Nettoyage de canapé", q:"Où sont les vitres ?", type:"single", label:"Logement", grid:true, options:[
+{ id:"logement", when:a=>a.service!=="Nettoyage textile", q:"Où sont les vitres ?", type:"single", label:"Logement", grid:true, options:[
 {v:"Appartement", ic:"🏢"}, {v:"Maison", ic:"🏡"}, {v:"Local professionnel", ic:"🏪"}, {v:"Autre", ic:"📍"} ]},
-{ id:"nb_vitres", when:a=>a.service!=="Nettoyage de canapé", q:"Combien de fenêtres environ ?", type:"single", label:"Nb de fenêtres", grid:true, options:[
+{ id:"nb_vitres", when:a=>a.service!=="Nettoyage textile", q:"Combien de fenêtres environ ?", type:"single", label:"Nb de fenêtres", grid:true, options:[
 {v:"1 à 5", ic:"🪟"}, {v:"6 à 10", ic:"🪟"}, {v:"11 à 20", ic:"🪟"}, {v:"Plus de 20", ic:"🏙️"} ]},
-{ id:"vitres_types", when:a=>a.service!=="Nettoyage de canapé", q:"Quels types de vitrages ?", hint:"Plusieurs choix possibles", type:"multi", label:"Vitrages", options:[
+{ id:"vitres_types", when:a=>a.service!=="Nettoyage textile", q:"Quels types de vitrages ?", hint:"Plusieurs choix possibles", type:"multi", label:"Vitrages", options:[
 {v:"Fenêtres classiques", ic:"🪟"}, {v:"Baies vitrées", ic:"🚪"}, {v:"Véranda", ic:"🌿"},
 {v:"Velux / fenêtres de toit", ic:"🏠"}, {v:"Vitrine", ic:"🏪"} ]},
 { id:"delai", q:"Pour quand ?", type:"single", label:"Délai", options:[
@@ -191,7 +221,7 @@ const steps = active();
 const s = steps[stepIndex];
 const pct = Math.round((stepIndex) / steps.length * 100);
 $("#bar").style.width = Math.max(pct, 6) + "%";
-$("#count").textContent = `Étape ${stepIndex+1}/${steps.length}`;
+$("#count").textContent = answers.service ? `Étape ${stepIndex+1}/${steps.length}` : "Étape 1";
 $("#back").classList.toggle("show", stepIndex > 0);
 document.body.classList.toggle("final", s.type === "final");
 let h = `<div class="${anim?"step":""}"><h2 class="q">${s.q}</h2>${s.hint?`<p class="hint">${s.hint}</p>`:""}`;
@@ -287,14 +317,14 @@ if (answers.message) lines.push(`Précisions : ${answers.message}`);
 return lines.join("\n");
 }
 function trackLead(channel){
-try { if (window.fbq) fbq("track", "Lead", {content_name: answers.service, channel}); } catch(e){}
+try { if (window.fbq) fbq('track', 'Lead', {}, {eventID: 'devis-' + Date.now()}); } catch(e){}
 try { if (window.gtag) gtag("event", "generate_lead", {method: channel}); } catch(e){}
 }
 function sendWhatsApp(track){
 if (track) trackLead("whatsapp");
-const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(fullText())}`;
-window.open(url, "_blank") || (location.href = url);
+const lienWhatsApp = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(fullText())}`;
 if (track) showDone(false);
+setTimeout(() => { window.location.href = lienWhatsApp; }, track ? 300 : 0);
 }
 async function sendEmail(){
 const btn = $("#send");
@@ -334,15 +364,30 @@ ${viaEmail
 $("#wa2").onclick = () => sendWhatsApp(false);
 }
 function waIcon(){ return `<svg viewBox="0 0 32 32" width="22" height="22" fill="#fff"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3 29l6.6-2c1.9 1 4.1 1.6 6.4 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.3c-2.1 0-4-.6-5.7-1.6l-.4-.2-3.9 1.2 1.2-3.8-.3-.4c-1.1-1.7-1.8-3.6-1.8-5.7C5.1 9.9 10 5.1 16 5.1s10.9 4.8 10.9 10.7S22 26.3 16 26.3zm6-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2s0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.8 1.1 3.3.9 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.3-.3-.4-.6-.5z"/></svg>`; }
-// Pre-select service from URL: ?service=canape or ?service=vitres (one link per ad)
+// Pre-select service from URL: ?service=textile|canape|matelas|vitres|both (one link per ad)
 (function(){
 const p = new URLSearchParams(location.search).get("service");
-const map = {canape:"Nettoyage de canapé", vitres:"Nettoyage de vitres", both:"Canapé + vitres"};
-if (map[p]){ answers.service = map[p]; stepIndex = 1; }
+const map = {textile:"Nettoyage textile", canape:"Nettoyage textile", matelas:"Nettoyage textile", vitres:"Nettoyage de vitres", both:"Textile + vitres"};
+const items = {canape:"Canapé", matelas:"Matelas"};
+if (map[p]){ answers.service = map[p]; stepIndex = 1; if (items[p]) answers.textile_items = [items[p]]; }
 })();
 $("#fab").href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Bonjour " + CONFIG.brand + ", je souhaite un devis gratuit.")}`;
 $("#yr").textContent = new Date().getFullYear();
 render();
+</script>
+<div class="cookie" id="cookie" role="dialog" aria-label="Cookies">
+<p>🍪 Nous utilisons des cookies (Meta Pixel) pour mesurer l'efficacité de nos publicités. Vous pouvez accepter ou refuser. <a href="/confidentialite">En savoir plus</a></p>
+<div class="cb"><button type="button" class="no" id="ck-no">Refuser</button><button type="button" class="yes" id="ck-yes">Accepter</button></div>
+</div>
+<script>
+(function(){
+let c = null; try { c = localStorage.getItem("vw_consent"); } catch(e){}
+const box = document.getElementById("cookie");
+if (!c){ box.classList.add("show"); document.body.classList.add("has-cookie"); }
+function choose(v){ try { localStorage.setItem("vw_consent", v); } catch(e){} box.classList.remove("show"); document.body.classList.remove("has-cookie"); if (v === "yes") window.vwLoadPixel(); }
+document.getElementById("ck-yes").onclick = () => choose("yes");
+document.getElementById("ck-no").onclick = () => choose("no");
+})();
 </script>
 </body>
 </html>
