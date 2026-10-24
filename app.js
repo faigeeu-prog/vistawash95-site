@@ -38,7 +38,6 @@
       tot.textContent=total.toLocaleString('fr-FR')+' €';
       tabs.forEach(function(t){var n=$$('#p-'+t.dataset.tab+' .row').reduce(function(a,r){return a+((+r.dataset.q||0)>0?1:0)},0),b=t.querySelector('.n');b.textContent=n;b.hidden=!n});
       var msg='Bonjour, je souhaite réserver un nettoyage'+(city?' à '+city:'')+' :\n'+(lines.length?lines.join('\n')+'\nTotal estimé : '+total+' €':'(à préciser)')+(city?'':'\nMa ville : ');
-      link.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
     }
     rows.forEach(function(r){
       var b=r.querySelectorAll('button'),u=r.dataset.unit;
@@ -48,16 +47,30 @@
     render();
   }
 
-  /* formulaire -> WhatsApp */
-  var f=$('#form');
+  /* simulateur -> formulaire */
+  if(link)link.addEventListener('click',function(){
+    var m=$('#f-msg'),rs=$$('.row',sim).filter(function(r){return +r.dataset.q>0});
+    if(m&&rs.length){m.value=rs.map(function(r){var u=r.dataset.unit,q=+r.dataset.q;return (u?r.dataset.name+' ('+q+' m²)':(q>1?q+' × ':'')+r.dataset.name)+' : '+val(r)+' €'}).join('\n')+'\nTotal estimé : '+tot.textContent}
+    var keys={};rs.forEach(function(r){keys[r.closest('[id^=p-]').id.slice(2)]=1});
+    $$('input[name=svc]').forEach(function(i){var k=i.value.toLowerCase();Object.keys(keys).forEach(function(t){if(k.indexOf(t.slice(0,4))===0)i.checked=true})});
+  });
+
+  /* formulaire : envoi instantané par mail */
+  var f=$('#form'),MAIL='garyhamza107@gmail.com';
   if(f)f.addEventListener('submit',function(e){
     e.preventDefault();
-    var n=$('#f-name'),c=$('#f-city'),ok=true;
-    [n,c].forEach(function(i){if(!i.value.trim()){i.style.borderColor='#DC2626';ok=false}else i.style.borderColor=''});
-    if(!ok){(n.value.trim()?c:n).focus();return}
+    var n=$('#f-name'),t=$('#f-tel'),c=$('#f-city'),bad=null;
+    var tel=t.value.replace(/[^\d+]/g,'');
+    [[n,n.value.trim()],[t,tel.replace(/\D/g,'').length>=9],[c,c.value]].forEach(function(x){if(!x[1]){x[0].style.borderColor='#DC2626';bad=bad||x[0]}else x[0].style.borderColor=''});
+    if(bad){bad.focus();return}
+    if(f._honey&&f._honey.value)return;
     var svc=$$('input[name=svc]:checked',f).map(function(i){return i.value}).join(', ')||'à préciser';
-    var m=$('#f-msg').value.trim();
-    var msg='Bonjour, je suis '+n.value.trim()+' ('+c.value+').\nJe souhaite un devis pour : '+svc+'.'+(m?'\n'+m:'');
-    window.location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    var data={_subject:'Nouvelle demande de devis – '+svc+' – '+c.value,_template:'table',_captcha:'false',
+      'Prénom':n.value.trim(),'Téléphone':t.value.trim(),'Ville':c.value,'Services':svc,'Précisions':$('#f-msg').value.trim()||'-','Page':location.pathname};
+    /* confirmation immédiate pour le client */
+    f.innerHTML='<div class="sent full"><div class="ok">✓</div><h3>Demande envoyée !</h3><p>Merci '+n.value.trim().replace(/</g,'')+', on vous rappelle très vite au '+t.value.trim().replace(/</g,'')+' pour votre devis gratuit.</p></div>';
+    try{if(window.fbq)fbq('track','Lead',{content_name:svc,content_category:c.value})}catch(_){}
+    try{if(window.gtag)gtag('event','generate_lead')}catch(_){}
+    fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)}).catch(function(){});
   });
 })();
