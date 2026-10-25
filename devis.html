@@ -181,8 +181,10 @@ const STEPS = [
 { id:"contact", q:"Vos coordonnées", hint:"Pour vous envoyer votre devis gratuit", type:"final", fields:[
 {id:"prenom", label:"Prénom", ph:"Prénom", req:true, ac:"given-name"},
 {id:"nom", label:"Nom", ph:"Nom", req:true, ac:"family-name"},
-{id:"adresse", label:"Adresse", ph:"Ex : 12 rue de la Paix, 95000 Cergy", req:true, ac:"street-address"},
-{id:"tel", label:"Téléphone", ph:"06 12 34 56 78", req:true, ac:"tel", mode:"tel", type:"tel",
+{id:"ville", label:"Ville", ph:"Ex : Cergy", req:true, ac:"address-level2"},
+{id:"cp", label:"Code postal", ph:"95000", req:true, ac:"postal-code", mode:"numeric",
+pattern:/^\d{5}$/, err:"Code postal invalide"},
+{id:"tel", label:"Téléphone", ph:"06 12 34 56 78", req:true, ac:"tel", mode:"tel", type:"tel", full:true,
 pattern:/^(?:(?:\+|00)33\s?|0)[1-9](?:[\s.-]?\d{2}){4}$/, err:"Numéro de téléphone invalide"} ] }
 ];
 const $ = s => document.querySelector(s);
@@ -212,7 +214,15 @@ f.area ? `<textarea id="f_${f.id}" rows="2" placeholder="${f.ph}">${answers[f.id
 : `<input id="f_${f.id}" type="${f.type||"text"}" placeholder="${f.ph}" autocomplete="${f.ac||"off"}" ${f.mode?`inputmode="${f.mode}"`:""} value="${(answers[f.id]||"").replace(/"/g,"&quot;")}">`
 }<div class="msg" id="m_${f.id}"></div></div>`);
 if (s.row) h += `<div class="row">${flds.join("")}</div>`;
-else if (s.type === "final") h += `<div class="row">${flds[0]}${flds[1]}</div>${flds.slice(2).join("")}`;
+else if (s.type === "final"){
+let i = 0, out = "";
+while (i < flds.length){
+if (s.fields[i].full){ out += flds[i]; i++; }
+else if (i+1 < flds.length && !s.fields[i+1].full){ out += `<div class="row">${flds[i]}${flds[i+1]}</div>`; i += 2; }
+else { out += flds[i]; i++; }
+}
+h += out;
+}
 else h += flds.join("");
 if (s.type === "final"){
 h += recapHTML();
@@ -277,7 +287,7 @@ if (s.fields) return;
 const v = answers[s.id]; if (!v || (Array.isArray(v) && !v.length)) return;
 rows.push([s.label, Array.isArray(v) ? v.join(", ") : v]);
 });
-if (answers.adresse) rows.push(["Adresse", answers.adresse]);
+if (answers.ville || answers.cp) rows.push(["Ville", [answers.cp, answers.ville].filter(Boolean).join(" ")]);
 return rows;
 }
 function recapHTML(){ return `<div class="recap">${summary().map(([k,v])=>`<div><b>${k}</b><span>${v}</span></div>`).join("")}</div>`; }
@@ -301,7 +311,7 @@ async function sendEmail(){
 const btn = $("#send");
 btn.disabled = true; btn.innerHTML = `<span class="spin"></span> Envoi…`;
 const payload = {
-_subject: `Nouvelle demande de devis – ${answers.service} – ${answers.adresse}`,
+_subject: `Nouvelle demande de devis – ${answers.service} – ${answers.ville||""} ${answers.cp||""}`.trim(),
 _template: "table", _captcha: "false",
 Service: answers.service
 };
